@@ -19,6 +19,24 @@ public class TaskController {
 @Autowired	
 private TaskService taskService;
 	
+@GetMapping("/getAllTasks")
+@ResponseBody
+public ResponseEntity getAllTasks() {
+	System.out.println( "Inside Controller");
+
+    try {
+    	List<String> tasks= null;
+    	
+    	tasks = taskService.getAllTasks();
+        if (tasks == null) {
+            return ResponseEntity.badRequest().body("Could not find Task.");
+        }
+        return ResponseEntity.ok(tasks);
+    } catch (Exception e) {
+     
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+}
     @GetMapping("/getTaskWithThreeSubTask")
     @ResponseBody
     public ResponseEntity getTaskWithThreeSubTask() {

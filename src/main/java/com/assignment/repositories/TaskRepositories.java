@@ -39,6 +39,11 @@ public interface TaskRepositories extends JpaRepository <Task, Long>
     				"(select child_task_id from task_child_task where task_id in " + 
     				"(select task_id from task_child_task))) ")
     public List<String> findThirdLevelTask();
+
+    @Query(nativeQuery=true,
+    		value = 
+    				"select name from task ")
+	public List<String> findAllTask();
     
 	
     

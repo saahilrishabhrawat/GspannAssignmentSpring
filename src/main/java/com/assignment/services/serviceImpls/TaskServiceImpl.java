@@ -22,6 +22,16 @@ public class TaskServiceImpl implements TaskService {
 	
 	
 	
+	/**
+	 * Return All Tasks
+	 */
+	@Override
+	public List<String> getAllTasks() throws Exception {
+		List<String> tasks = new ArrayList<String>();
+		tasks = taskRepository.findAllTask();
+		return tasks;
+	}
+	
 	
 /**
  * Return tasks with at least three sub tasks
@@ -61,5 +71,9 @@ public class TaskServiceImpl implements TaskService {
 		tasks = taskRepository.findThirdLevelTask();
 		return tasks;
 	}
+
+
+
+
 
 }
